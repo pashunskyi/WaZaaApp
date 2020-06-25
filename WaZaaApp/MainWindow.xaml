@@ -5,8 +5,102 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WaZaaApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             
+        
+        Title="WaZaaaap" Height="500" Width="600" MinHeight="500" MinWidth="500" >
+    <Grid Background="#FF18191D">
+        <!--Меню реєстрацї-->
+        <local:LoginUC
+            Visibility="Hidden"
+            Grid.RowSpan="9"
+            Grid.ColumnSpan="8"/>
+        <!--Діалог-->
+        <local:DialogUC Grid.Column="1" Grid.Row="1"/>
+        <!--Верхня панель-->
+        <StackPanel 
+            Background="#FF282E33"
+            Orientation="Horizontal"
+            MinWidth="50"
+            Grid.ColumnSpan="8">
+            <!--Кнопка меню-->
+            <Image Source="/Icons/menu.png" />
+            <Button 
+                x:Name="Chatsbtm"  
+                Margin="-50,0,0,0"
+                Height="50"
+                Width="50"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Top"
+                Background="{x:Null}"
+                BorderBrush="{x:Null}" >
+            </Button>
+            <TextBlock
+                TextAlignment="Center"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                 Margin="16,0,0,0"
+                Text="text">
+
+            </TextBlock>
+        </StackPanel>
+
+        <!--Бокова панель-->
+        <StackPanel
+            x:Name="StackChats"
+            Background="#FF282E33"
+            Grid.RowSpan="8"
+            Grid.Row="1"
+            Width="50"
+            
+            >
+            <StackPanel.Style>
+                <Style TargetType="StackPanel">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver"  Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation To="200" Duration="0:0:0.300"  Storyboard.TargetProperty="Width"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation To="50" Duration="0:0:0.300" Storyboard.TargetProperty="Width" ></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Style>
+            <local:ChatsUC></local:ChatsUC>
+        </StackPanel>
+
+
+        <!--Сітка-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="SizeChats" Width="{Binding ElementName=StackChats, Path=Width, Mode=OneWay}">
+            </ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" MinHeight="50">
+            </RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
 
     </Grid>
+
 </Window>
