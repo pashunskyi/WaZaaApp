@@ -17,24 +17,24 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              
         
-        Title="WaZaaaap" Height="500" Width="600" MinHeight="500" MinWidth="500" >
+        Title="WaZaaaap" Height="190" Width="500" MinHeight="190" MinWidth="500" >
     <Grid Background="#FF18191D">
         <!--Меню реєстрацї-->
         <local:LoginUC
-            Visibility="Hidden"
+            Visibility="Collapsed"
             Grid.RowSpan="9"
             Grid.ColumnSpan="8"/>
         <!--Діалог-->
         <local:DialogUC Grid.Column="1" Grid.Row="1"/>
         <!--Верхня панель-->
-        <StackPanel 
+        <StackPanel  
             Background="#FF282E33"
             Orientation="Horizontal"
             MinWidth="50"
             Grid.ColumnSpan="8">
             <!--Кнопка меню-->
-            <Image Source="/Icons/menu.png" />
-            <Button 
+            <Image Source="/Icons/menu.png"  />
+            <Button
                 x:Name="Chatsbtm"  
                 Margin="-50,0,0,0"
                 Height="50"
@@ -44,7 +44,7 @@
                 Background="{x:Null}"
                 BorderBrush="{x:Null}" >
             </Button>
-            <TextBlock
+            <TextBlock 
                 TextAlignment="Center"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
@@ -55,7 +55,7 @@
         </StackPanel>
 
         <!--Бокова панель-->
-        <StackPanel
+        <StackPanel 
             x:Name="StackChats"
             Background="#FF282E33"
             Grid.RowSpan="8"

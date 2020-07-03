@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace WaZaaApp
 {
@@ -23,6 +25,16 @@ namespace WaZaaApp
         public MainWindow()
         {
             InitializeComponent();
+
+            using (AppContext ctx = new AppContext())
+            {
+                User a = new User {Id = 1, Login = "asdasfag", Password = "asdash", Email= "asgag" };
+                ctx.Users.Add(a);
+                //ctx.SaveChanges();
+            }
+            
         }
+
+    
     }
 }
