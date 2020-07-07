@@ -22,5 +22,37 @@ namespace WaZaaApp
         {
             InitializeComponent();
         }
+        //регістрація
+        private void LogInBtm_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+
+                using (AppContext ctx = new AppContext())
+                {
+                    User a = new User
+                    {
+                        Login = LoginTb.Text,
+                        Password = PasswordTb.Text,
+                        Email = EmailTb.Text,
+                        //IsOnline = true
+                    };
+                    ctx.Users.Add(a);
+                    ctx.SaveChanges();
+
+                }
+            }
+            catch
+            {
+              
+            }
+        }
+        //вхід
+        private void SignInBtm_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        
     }
 }

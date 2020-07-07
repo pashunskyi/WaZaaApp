@@ -12,28 +12,27 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        
-        
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             
         
         Title="WaZaaaap" Height="190" Width="500" MinHeight="190" MinWidth="500" >
     <Grid Background="#FF18191D">
         <!--Меню реєстрацї-->
         <local:LoginUC
+            x:Name="LoginUC"
             Visibility="Collapsed"
             Grid.RowSpan="9"
             Grid.ColumnSpan="8"/>
         <!--Діалог-->
-        <local:DialogUC Grid.Column="1" Grid.Row="1"/>
+        <local:DialogUC x:Name="DialogUC" Grid.Column="1" Grid.Row="1"/>
         <!--Верхня панель-->
         <StackPanel  
+            x:Name="UpperLine"
             Background="#FF282E33"
             Orientation="Horizontal"
             MinWidth="50"
             Grid.ColumnSpan="8">
             <!--Кнопка меню-->
-            <Image Source="/Icons/menu.png"  />
+            <Image x:Name="MenuBtbImage" Source="/Icons/menu.png"  />
             <Button
                 x:Name="Chatsbtm"  
                 Margin="-50,0,0,0"
@@ -45,6 +44,7 @@
                 BorderBrush="{x:Null}" >
             </Button>
             <TextBlock 
+                x:Name="NameOfCurrentChat"
                 TextAlignment="Center"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"

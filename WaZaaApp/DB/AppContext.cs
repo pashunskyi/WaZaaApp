@@ -7,19 +7,21 @@ namespace WaZaaApp
 {
     class AppContext : DbContext
     {
-       
+        //виставити дефолтні налаштування
+        public AppContext(DbContextOptions<AppContext> options) : base(options) { }
+        //створити бд, якшо вона не створена
         public AppContext()
         {
             Database.EnsureCreated();
         }
+        //конект до бд
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=WaZaaAppDB;Trusted_Connection=True;");
         }
-
-        public virtual DbSet<Chat> Chats { get; set; }
-        public virtual DbSet<Message> Messages { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public  DbSet<Chat> Chats { get; set; }
+        public  DbSet<Message> Messages { get; set; }
+        public  DbSet<User> Users { get; set; }
 
     }
 }
