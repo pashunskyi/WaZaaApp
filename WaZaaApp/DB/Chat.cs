@@ -7,15 +7,17 @@ using System.Text;
 
 namespace WaZaaApp
 {
+    [Table("tblChats")]
     public class Chat
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required, StringLength(255)]
         public string Name { get; set; }
-        [NotMapped]
-        public virtual ICollection<User> Users { get; set; }
-        [NotMapped]
+        public virtual ICollection<UsersChat> UsersChats { get; set; }
         public virtual ICollection<Message> Messages { get; set; }
+        //public virtual ICollection<User> Users { get; set; }
+        //[NotMapped]
+        //public virtual ICollection<Message> Messages { get; set; }
     }
 }

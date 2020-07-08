@@ -6,20 +6,13 @@ using System.Text;
 
 namespace WaZaaApp
 {
-    [Table("tblMessages")]
-    public class Message
+    public class UsersChat
     {
-        [Key]
-        public int Id { get; set; }
-        [ForeignKey("User")]
+        [ForeignKey("User"), Key, Column(Order = 0)]
         public int UserId { get; set; }
-        [Required, MaxLength(4000)]
-        public string Text { get; set; }
-        [ForeignKey("Chat")]
+        [ForeignKey("Chat"), Key, Column(Order = 1)]
         public int ChatId { get; set; }
-
         public virtual User User { get; set; }
         public virtual Chat Chat { get; set; }
-
     }
 }

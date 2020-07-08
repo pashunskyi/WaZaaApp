@@ -7,21 +7,22 @@ using System.Windows.Media;
 
 namespace WaZaaApp
 {
+    [Table("tblUsers")]
     public class User
     {
         [Key]
         public int Id { get; set; }
-        [NotMapped, MaxLength(20)]
+        [StringLength(20)]
         public string Login { get; set; }
-        [NotMapped]
+        [StringLength(150)]
         public string Email { get; set; }
-        [NotMapped, MaxLength(20)]
+        [StringLength(150)]
         public string Password { get; set; }
-        [NotMapped]
         public bool IsOnline { get; set; }
-        [NotMapped]
+        
         public byte[] Avatar { get; set; }
-        [NotMapped]
-        public virtual ICollection<Chat> Chats { get; set; }
+        
+        public virtual ICollection<UsersChat> UsersChats { get; set; }
+        public virtual ICollection<Message> Messages { get; set; }
     }
 }

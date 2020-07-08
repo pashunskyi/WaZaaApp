@@ -31,7 +31,7 @@ namespace WaZaaApp
             {
                 //User a = new User {Id = 1, Login = "asdasfag", Password = "asdash", Email= "asgag" };
                 //ctx.Users.Add(a);
-                ctx.Chats.Count();
+               // ctx.Chats.Count();
                 ctx.SaveChanges();
 
             }
