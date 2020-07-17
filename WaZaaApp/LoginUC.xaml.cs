@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,10 +26,8 @@ namespace WaZaaApp
         //регістрація
         private void LogInBtm_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if(IsSameLogin() == true)
             {
-
-
                 using (AppContext ctx = new AppContext())
                 {
                     User a = new User
@@ -43,14 +42,31 @@ namespace WaZaaApp
 
                 }
             }
-            catch
-            {
-              
-            }
+           
         }
         //вхід
         private void SignInBtm_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+        //перевірка на ідентичні імена
+        public bool IsSameLogin()
+        {
+            using (AppContext ctx = new AppContext())
+            {
+                foreach (var item in ctx.Users)
+                {
+                    if(item.Login == LoginTb.Text)
+                    {
+                        MessageBox.Show("Такий нік уже зареєстрований");
+                        return false;
+                    }
+                    
+                }
+            }
+            return true;
+
+            
 
         }
         
