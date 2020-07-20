@@ -26,28 +26,58 @@ namespace WaZaaApp
         //регістрація
         private void LogInBtm_Click(object sender, RoutedEventArgs e)
         {
-            if(IsSameLogin() == true)
+            if (IsSameLogin() == true && IsloginNotNull() == true && IsRegisterPasswordCorrect() == true)
             {
                 using (AppContext ctx = new AppContext())
                 {
-                    User a = new User
+                    User user = new User
                     {
                         Login = LoginTb.Text,
                         Password = PasswordTb.Text,
-                        Email = EmailTb.Text,
-                        //IsOnline = true
+                        Email = EmailTb.Text
                     };
-                    ctx.Users.Add(a);
+                    ctx.Users.Add(user);
                     ctx.SaveChanges();
-
                 }
             }
-           
         }
         //вхід
         private void SignInBtm_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+        //перевірка чи нік не пустий або не перевищує кількість допустимих символів і чи є вони допустимі
+        public bool IsloginNotNull()
+        {
+            bool b = false;
+            for (int i = 0; i < LoginTb.Text.Length; i++)
+            {
+                if (!((LoginTb.Text[i] >= 'A' && LoginTb.Text[i] <= 'Z') ||
+                    (LoginTb.Text[i] >= 'a' && LoginTb.Text[i] <= 'z') ||
+                    (LoginTb.Text[i] >= '0' && LoginTb.Text[i] <= '9')))
+                {
+                    b = true;
+                }
+            }
+            if (b == true)
+            {
+                MessageBox.Show("В логіні є не домустимі символи");
+                return false;
+            }
+            else if (LoginTb.Text.Length > 20)
+            {
+                MessageBox.Show("Максимальна кількість символів для логіну 20");
+                return false;
+            }
+            if (string.IsNullOrEmpty(LoginTb.Text))
+            {
+                MessageBox.Show("Введіть логін");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
         //перевірка на ідентичні імена
         public bool IsSameLogin()
@@ -61,14 +91,39 @@ namespace WaZaaApp
                         MessageBox.Show("Такий нік уже зареєстрований");
                         return false;
                     }
-                    
                 }
             }
             return true;
-
-            
-
         }
-        
+        // перевірка на допустимі символи та на максимальну і мінімальну кількість символів для пароля
+        public bool IsRegisterPasswordCorrect()
+        {
+            bool b = false;
+            for (int i = 0; i < PasswordTb.Text.Length; i++)
+            {
+                if (!((PasswordTb.Text[i] >= 'A' && PasswordTb.Text[i] <= 'Z') ||
+                    (PasswordTb.Text[i] >= 'a' && PasswordTb.Text[i] <= 'z') ||
+                    (PasswordTb.Text[i] >= '0' && PasswordTb.Text[i] <= '9')))
+                {
+                    b = true;
+                }
+            }
+            if(b == true)
+            {
+                MessageBox.Show("В паролі є не домустимі символи");
+                return false;
+            }
+            else if (PasswordTb.Text.Length > 200)
+            {
+                MessageBox.Show("Максимальна кількість символів для пароля 200");
+                return false;
+            }
+            else if (PasswordTb.Text.Length < 5 || string.IsNullOrEmpty(PasswordTb.Text))
+            {
+                MessageBox.Show("Короткий пароль. Мінімальна кількість символів 6");
+                return false;
+            }
+            return true;
+        }
     }
 }
