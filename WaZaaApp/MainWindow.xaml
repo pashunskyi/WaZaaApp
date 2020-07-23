@@ -15,7 +15,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         
         Title="WaZaaaap" Height="190" Width="500" MinHeight="190" MinWidth="500" >
-    <Grid Background="#FF18191D">
+    <Grid x:Name="Grd" Background="#FF18191D">
         <!--Меню реєстрацї-->
         <local:LoginUC
             x:Name="LoginUC"

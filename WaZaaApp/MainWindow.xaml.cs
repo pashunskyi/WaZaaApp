@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,12 +18,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WaZaaApp
 {
+    
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        //bool isin = false;
+        User usr = new User();
         public MainWindow()
         {
             InitializeComponent();
@@ -33,11 +35,22 @@ namespace WaZaaApp
                 //ctx.Users.Add(a);
                // ctx.Chats.Count();
                 ctx.SaveChanges();
-
             }
             OpenRegisterWindow();
-
-
+            
+        }
+        // перевірка чи увійшов користувач
+        public void IsLogged()
+        {
+            while (true)
+            {
+                if (LoginUC.Visibility == Visibility.Collapsed)
+                {
+                    usr = LoginUC.u;
+                    break;
+                }
+            }
+            OpenUserWindow();
         }
         //відкрити вікно регістрації
         public void OpenRegisterWindow()
@@ -51,19 +64,26 @@ namespace WaZaaApp
             UpperLine.Visibility = Visibility.Hidden;
             Application.Current.MainWindow.Height = 190;
             Application.Current.MainWindow.Width = 500;
+            Thread myThread = new Thread(IsLogged);
+            myThread.Start();
         }
         //відкрити інтерфейс користувача
         public void OpenUserWindow()
         {
-            LoginUC.Visibility = Visibility.Hidden;
-            DialogUC.Visibility = Visibility.Visible;
-            MenuBtbImage.Visibility = Visibility.Visible;
-            Chatsbtm.Visibility = Visibility.Visible;
-            NameOfCurrentChat.Visibility = Visibility.Visible;
-            StackChats.Visibility = Visibility.Visible;
-            UpperLine.Visibility = Visibility.Visible;
-            Application.Current.MainWindow.Height = 600;
-            Application.Current.MainWindow.Width = 500;
+            this.Dispatcher.Invoke(() =>
+            {
+                LoginUC.Visibility = Visibility.Hidden;
+                DialogUC.Visibility = Visibility.Visible;
+                MenuBtbImage.Visibility = Visibility.Visible;
+                Chatsbtm.Visibility = Visibility.Visible;
+                NameOfCurrentChat.Visibility = Visibility.Visible;
+                StackChats.Visibility = Visibility.Visible;
+                UpperLine.Visibility = Visibility.Visible;
+                Application.Current.MainWindow.Height = 600;
+                Application.Current.MainWindow.Width = 500;
+
+            });
+            
         }
 
 

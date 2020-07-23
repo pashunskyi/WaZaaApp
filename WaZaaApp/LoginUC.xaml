@@ -20,7 +20,7 @@
         <TextBlock Foreground="#FF20EEDA" VerticalAlignment="Center" Grid.Row="2"  >Password:</TextBlock>
         <TextBox x:Name="EmailTb" Grid.ColumnSpan="3" Height="auto" VerticalAlignment="Center" VerticalContentAlignment="Bottom" Grid.Column="1"/>
         <TextBox x:Name="LoginTb" Grid.ColumnSpan="3" Height="auto" VerticalAlignment="Center" VerticalContentAlignment="Bottom" Grid.Column="1" Grid.Row="1"/>
-        <TextBox x:Name="PasswordTb" Height="auto" Grid.Row="2" Grid.ColumnSpan="3" Grid.Column="1" VerticalContentAlignment="Bottom" VerticalAlignment="Center" />
+        <PasswordBox x:Name="PasswordTb" PasswordChar="*" Height="auto" Grid.Row="2" Grid.ColumnSpan="3" Grid.Column="1" VerticalContentAlignment="Bottom" VerticalAlignment="Center" />
         <Button x:Name="SignInBtm" Style="{StaticResource MaterialDesignRaisedDarkButton}" Background="#FF282E33" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Foreground="#FF20EEDA" BorderBrush="{x:Null}" Height="37" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" Click="SignInBtm_Click" >Sign in</Button>
         <Button x:Name="LogInBtm" Style="{StaticResource MaterialDesignRaisedDarkButton}" Background="#FF282E33" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Foreground="#FF20EEDA" BorderBrush="{x:Null}" Grid.ColumnSpan="2" Grid.Column="2" Height="37" Grid.Row="3" Click="LogInBtm_Click" >Log in</Button>
 

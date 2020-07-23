@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -22,7 +23,9 @@ namespace WaZaaApp
         public LoginUC()
         {
             InitializeComponent();
+            
         }
+        public User u { get; set; }
         //регістрація
         private void LogInBtm_Click(object sender, RoutedEventArgs e)
         {
@@ -33,18 +36,41 @@ namespace WaZaaApp
                     User user = new User
                     {
                         Login = LoginTb.Text,
-                        Password = PasswordTb.Text,
+                        Password = PasswordTb.Password,
                         Email = EmailTb.Text
                     };
                     ctx.Users.Add(user);
                     ctx.SaveChanges();
+                    foreach (var item in ctx.Users)
+                    {
+                        if (item.Login == user.Login && item.Password == user.Password)
+                        {
+                            u = item;
+                            this.Visibility = Visibility.Collapsed;
+                        }
+                    }
                 }
+                
+                PasswordTb.Password = "";
             }
         }
         //вхід
         private void SignInBtm_Click(object sender, RoutedEventArgs e)
         {
 
+            using (AppContext ctx = new AppContext())
+            {
+                foreach (var item in ctx.Users)
+                {
+                    if (item.Login == LoginTb.Text && item.Password == PasswordTb.Password)
+                    {
+                        u = item;
+                        this.Visibility = Visibility.Collapsed;
+                        return;
+                    }
+                }
+            }
+            MessageBox.Show("логін чи пароль не вірні");
         }
         //перевірка чи нік не пустий або не перевищує кількість допустимих символів і чи є вони допустимі
         public bool IsloginNotNull()
@@ -99,11 +125,11 @@ namespace WaZaaApp
         public bool IsRegisterPasswordCorrect()
         {
             bool b = false;
-            for (int i = 0; i < PasswordTb.Text.Length; i++)
+            for (int i = 0; i < PasswordTb.Password.Length; i++)
             {
-                if (!((PasswordTb.Text[i] >= 'A' && PasswordTb.Text[i] <= 'Z') ||
-                    (PasswordTb.Text[i] >= 'a' && PasswordTb.Text[i] <= 'z') ||
-                    (PasswordTb.Text[i] >= '0' && PasswordTb.Text[i] <= '9')))
+                if (!((PasswordTb.Password[i] >= 'A' && PasswordTb.Password[i] <= 'Z') ||
+                    (PasswordTb.Password[i] >= 'a' && PasswordTb.Password[i] <= 'z') ||
+                    (PasswordTb.Password[i] >= '0' && PasswordTb.Password[i] <= '9')))
                 {
                     b = true;
                 }
@@ -113,12 +139,12 @@ namespace WaZaaApp
                 MessageBox.Show("В паролі є не домустимі символи");
                 return false;
             }
-            else if (PasswordTb.Text.Length > 200)
+            else if (PasswordTb.Password.Length > 200)
             {
                 MessageBox.Show("Максимальна кількість символів для пароля 200");
                 return false;
             }
-            else if (PasswordTb.Text.Length < 5 || string.IsNullOrEmpty(PasswordTb.Text))
+            else if (PasswordTb.Password.Length < 5 || string.IsNullOrEmpty(PasswordTb.Password))
             {
                 MessageBox.Show("Короткий пароль. Мінімальна кількість символів 6");
                 return false;
