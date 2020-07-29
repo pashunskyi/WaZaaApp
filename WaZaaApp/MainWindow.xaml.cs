@@ -28,14 +28,6 @@ namespace WaZaaApp
         public MainWindow()
         {
             InitializeComponent();
-            
-            using (AppContext ctx = new AppContext())
-            {
-                //User a = new User {Id = 1, Login = "asdasfag", Password = "asdash", Email= "asgag" };
-                //ctx.Users.Add(a);
-               // ctx.Chats.Count();
-                ctx.SaveChanges();
-            }
             OpenRegisterWindow();
             
         }
@@ -86,6 +78,9 @@ namespace WaZaaApp
             
         }
 
+        private void Chatsbtm_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }

@@ -41,7 +41,7 @@
                 HorizontalContentAlignment="Left"
                 VerticalContentAlignment="Top"
                 Background="{x:Null}"
-                BorderBrush="{x:Null}" >
+                BorderBrush="{x:Null}" Click="Chatsbtm_Click" >
             </Button>
             <TextBlock 
                 x:Name="NameOfCurrentChat"

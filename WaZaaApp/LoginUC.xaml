@@ -15,12 +15,37 @@
              d:DesignHeight="150" d:DesignWidth="500">
 
     <Grid Height="150" Width="500">
+
+        <Ellipse  Grid.Column="3" Grid.RowSpan="3">
+            <Ellipse.Fill>
+                <ImageBrush x:Name="RegisterAvatarImg" ImageSource="/DefaultUser.jpg" Stretch="Fill"></ImageBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <!--<Image x:Name="RegisterAvatarImg" Source="/DefaultUser.jpg" Width="auto" Grid.Column="3" Grid.RowSpan="3" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform x:Name="TransformImage" ScaleX="1" ScaleY="1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0"/>
+                </TransformGroup>
+            </Image.RenderTransform>-->
+            <!--<Image.OpacityMask>
+                <RadialGradientBrush x:Name="Circle" GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                    <GradientStop Color="#ffffffff" Offset="1" />
+                    <GradientStop Color="#00ffffff" Offset="1" />
+                </RadialGradientBrush>
+            </Image.OpacityMask>-->
+        <!--</Image>-->
+        <Button x:Name="SelectIamgeBtm" Height="110" Width="auto" Background="{x:Null}"  BorderBrush="{x:Null}" Click="SelectIamgeBtm_Click" Grid.Column="3" Grid.RowSpan="3" >
+
+        </Button>
         <TextBlock Foreground="#FF20EEDA" VerticalAlignment="Center"  Grid.Row="0"  >Email:</TextBlock>
         <TextBlock Foreground="#FF20EEDA" VerticalAlignment="Center"  Grid.Row="1"  >Login:</TextBlock>
         <TextBlock Foreground="#FF20EEDA" VerticalAlignment="Center" Grid.Row="2"  >Password:</TextBlock>
-        <TextBox x:Name="EmailTb" Grid.ColumnSpan="3" Height="auto" VerticalAlignment="Center" VerticalContentAlignment="Bottom" Grid.Column="1"/>
-        <TextBox x:Name="LoginTb" Grid.ColumnSpan="3" Height="auto" VerticalAlignment="Center" VerticalContentAlignment="Bottom" Grid.Column="1" Grid.Row="1"/>
-        <PasswordBox x:Name="PasswordTb" PasswordChar="*" Height="auto" Grid.Row="2" Grid.ColumnSpan="3" Grid.Column="1" VerticalContentAlignment="Bottom" VerticalAlignment="Center" />
+        <TextBox x:Name="EmailTb" Grid.ColumnSpan="2" Height="auto" VerticalAlignment="Center" VerticalContentAlignment="Bottom" Grid.Column="1"/>
+        <TextBox x:Name="LoginTb" Grid.ColumnSpan="2" Height="auto" VerticalAlignment="Center" VerticalContentAlignment="Bottom" Grid.Column="1" Grid.Row="1"/>
+        <PasswordBox x:Name="PasswordTb" PasswordChar="*" Height="auto" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="1" VerticalContentAlignment="Bottom" VerticalAlignment="Center" />
         <Button x:Name="SignInBtm" Style="{StaticResource MaterialDesignRaisedDarkButton}" Background="#FF282E33" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Foreground="#FF20EEDA" BorderBrush="{x:Null}" Height="37" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" Click="SignInBtm_Click" >Sign in</Button>
         <Button x:Name="LogInBtm" Style="{StaticResource MaterialDesignRaisedDarkButton}" Background="#FF282E33" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Foreground="#FF20EEDA" BorderBrush="{x:Null}" Grid.ColumnSpan="2" Grid.Column="2" Height="37" Grid.Row="3" Click="LogInBtm_Click" >Log in</Button>
 
@@ -28,12 +53,12 @@
             <ColumnDefinition Width="1*"></ColumnDefinition>
             <ColumnDefinition Width="1*"></ColumnDefinition>
             <ColumnDefinition Width="1*"></ColumnDefinition>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="105"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
     </Grid>

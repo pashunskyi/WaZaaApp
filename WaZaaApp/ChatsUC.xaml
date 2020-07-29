@@ -9,15 +9,19 @@
              MinWidth="30" Width="200" Height="50">
     <Grid Background="{x:Null}">
         <!--Зоображення-->
-        
-        <Image  Source="/rqoDpnCCrdpGFHM6qky3rS.jpg" Grid.ColumnSpan="2" Grid.RowSpan="5" >
+        <Ellipse Grid.ColumnSpan="2" Grid.RowSpan="5">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="/rqoDpnCCrdpGFHM6qky3rS.jpg" Stretch="Fill"></ImageBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <!--<Image  Source="/rqoDpnCCrdpGFHM6qky3rS.jpg" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" Grid.RowSpan="5" >
             <Image.OpacityMask>
                 <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
                     <GradientStop Color="#ffffffff" Offset="1" />
                     <GradientStop Color="#00ffffff" Offset="1" />
                 </RadialGradientBrush>
             </Image.OpacityMask>
-        </Image>
+        </Image>-->
         <!--Нік-->
         <TextBlock Text="Mr. Frog" TextAlignment="Left" FontSize="15" Foreground="#FF20EEDA" Grid.ColumnSpan="4" Grid.Column="2" Grid.RowSpan="2"></TextBlock>
         <!--Останнє повідомлення-->
