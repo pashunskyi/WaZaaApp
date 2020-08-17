@@ -73,14 +73,12 @@ namespace WaZaaApp
                 UpperLine.Visibility = Visibility.Visible;
                 Application.Current.MainWindow.Height = 600;
                 Application.Current.MainWindow.Width = 500;
-
             });
-            
         }
 
         private void Chatsbtm_Click(object sender, RoutedEventArgs e)
         {
-
+           
         }
     }
 }

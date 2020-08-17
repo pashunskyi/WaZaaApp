@@ -16,28 +16,24 @@
 
     <Grid Height="150" Width="500">
 
-        <Ellipse  Grid.Column="3" Grid.RowSpan="3">
+        <Ellipse  Grid.Column="3"
+                  Grid.RowSpan="3">
             <Ellipse.Fill>
-                <ImageBrush x:Name="RegisterAvatarImg" ImageSource="/DefaultUser.jpg" Stretch="Fill"></ImageBrush>
+                <ImageBrush x:Name="RegisterAvatarImg"
+                            ImageSource="/DefaultUser.jpg"
+                            Stretch="Fill">
+                    
+                </ImageBrush>
             </Ellipse.Fill>
         </Ellipse>
-        <!--<Image x:Name="RegisterAvatarImg" Source="/DefaultUser.jpg" Width="auto" Grid.Column="3" Grid.RowSpan="3" >
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform x:Name="TransformImage" ScaleX="1" ScaleY="1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform X="0"/>
-                </TransformGroup>
-            </Image.RenderTransform>-->
-            <!--<Image.OpacityMask>
-                <RadialGradientBrush x:Name="Circle" GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
-                    <GradientStop Color="#ffffffff" Offset="1" />
-                    <GradientStop Color="#00ffffff" Offset="1" />
-                </RadialGradientBrush>
-            </Image.OpacityMask>-->
-        <!--</Image>-->
-        <Button x:Name="SelectIamgeBtm" Height="110" Width="auto" Background="{x:Null}"  BorderBrush="{x:Null}" Click="SelectIamgeBtm_Click" Grid.Column="3" Grid.RowSpan="3" >
+        <Button x:Name="SelectIamgeBtm"
+                Height="110"
+                Width="auto"
+                Background="{x:Null}"
+                BorderBrush="{x:Null}"
+                Click="SelectIamgeBtm_Click"
+                Grid.Column="3"
+                Grid.RowSpan="3" >
 
         </Button>
         <TextBlock Foreground="#FF20EEDA" VerticalAlignment="Center"  Grid.Row="0"  >Email:</TextBlock>

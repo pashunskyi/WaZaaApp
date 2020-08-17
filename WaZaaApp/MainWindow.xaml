@@ -16,6 +16,8 @@
         
         Title="WaZaaaap" Height="190" Width="500" MinHeight="190" MinWidth="500" >
     <Grid x:Name="Grd" Background="#FF18191D">
+
+        <!--<local:MenuUC x:Name="MenuUC" Visibility="Collapsed" Grid.Column="1" Grid.Row="1"/>-->
         <!--Меню реєстрацї-->
         <local:LoginUC
             x:Name="LoginUC"

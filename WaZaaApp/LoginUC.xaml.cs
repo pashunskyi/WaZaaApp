@@ -1,6 +1,8 @@
-﻿using Microsoft.Win32;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -26,11 +28,12 @@ namespace WaZaaApp
             InitializeComponent();
 
         }
+        public byte[] ava;
         public User u { get; set; }
         //регістрація
         private void LogInBtm_Click(object sender, RoutedEventArgs e)
         {
-            if (IsSameLogin() == true && IsloginNotNull() == true && IsRegisterPasswordCorrect() == true)
+            if (IsSameLogin() == true && IsloginNotNull() == true && IsRegisterPasswordCorrect() == true && IsAvatarSelect() == true)
             {
                 using (AppContext ctx = new AppContext())
                 {
@@ -39,7 +42,7 @@ namespace WaZaaApp
                         Login = LoginTb.Text,
                         Password = PasswordTb.Password,
                         Email = EmailTb.Text,
-                        //Avatar = u.Avatar
+                        Avatar = ava
                     };
                     ctx.Users.Add(user);
                     ctx.SaveChanges();
@@ -74,11 +77,19 @@ namespace WaZaaApp
             }
             MessageBox.Show("логін чи пароль не вірні");
         }
-
-
-
-
-
+        //перевірка чи вибраний аватар
+        public bool IsAvatarSelect()
+        {
+            if (ava != null)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Виберіть свій аватар");
+                return false;
+            }
+        }
         //перевірка чи нік не пустий або не перевищує кількість допустимих символів і чи є вони допустимі
         public bool IsloginNotNull()
         {
@@ -128,7 +139,7 @@ namespace WaZaaApp
             }
             return true;
         }
-        // перевірка на допустимі символи та на максимальну і мінімальну кількість символів для пароля
+        //перевірка на допустимі символи та на максимальну і мінімальну кількість символів для пароля
         public bool IsRegisterPasswordCorrect()
         {
             bool b = false;
@@ -158,12 +169,8 @@ namespace WaZaaApp
             }
             return true;
         }
-
+        //вибір аватара
         private void SelectIamgeBtm_Click(object sender, RoutedEventArgs e)
-        {
-            FromFileTuUi();
-        }
-        public void FromFileTuUi()
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.DefaultExt = ".png";
@@ -172,51 +179,15 @@ namespace WaZaaApp
             if (result == true)
             {
                 string filename = dlg.FileName;
-                //RegisterAvatarImg.ImageSource = new BitmapImage(new Uri(filename, UriKind.Absolute));
-                //u.Avatar.Source = RegisterAvatarImg.ImageSource;
-                //Image myImage = new Image();
-                //myImage.Source = new BitmapImage(new Uri(filename, UriKind.Absolute));
-                //RegisterAvatarImg.ImageSource = myImage.Source;
-
-                
-                //var encoder = new PngBitmapEncoder();
-                //encoder.Frames.Add(BitmapFrame.Create((BitmapSource)RegisterAvatarImg.ImageSource));
-                //using (FileStream stream = new FileStream(filename, FileMode.Create))
-                //    encoder.Save(stream);
-
-
-                //u.Avatar =  encoder;
-
-
-
-                //FromFileTuDb(filename);
-                //BitmapImage b = new BitmapImage(new Uri(filename, UriKind.Absolute));
-
+                byte[] data = File.ReadAllBytes(filename);
+                RegisterAvatarImg.ImageSource = new BitmapImage(new Uri(filename, UriKind.Absolute));
+                ava = data;
             }
+
         }
 
-        public void FromFileTuDb(string filename)
-        {
-            // u = new User();
-            // Image i = new Image();
-            //Convert.ToByte(filename);
-            // u.Avatar = new Image();
 
 
-            //Image.Save(filename, ImageFormat.Png);
-            //System.Windows.Controls.Image myImage = new System.Windows.Controls.Image();
-            //myImage.Source = new BitmapImage(new Uri(filename));
-
-            //var encoder = new PngBitmapEncoder();
-            //encoder.Frames.Add(BitmapFrame.Create(new BitmapImage(new Uri(filename, UriKind.Absolute))));
-            //using (var stream = new FileStream(filename, FileMode.Create, FileAccess.Write))
-            //{
-                
-                
-
-            //    encoder.Save(stream);
-            //}
-        }
     }
-    
+
 }

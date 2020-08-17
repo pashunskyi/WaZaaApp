@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,6 +22,21 @@ namespace WaZaaApp
         public MenuUC()
         {
             InitializeComponent();
+            
+            
+            //BitmapImage btm;
+            //using (MemoryStream ms = new MemoryStream(u.Avatar))
+            //{
+            //    btm = new BitmapImage();
+            //    btm.BeginInit();
+            //    btm.StreamSource = ms;
+            //    // Below code for caching is crucial.
+            //    btm.CacheOption = BitmapCacheOption.OnLoad;
+            //    btm.EndInit();
+            //    btm.Freeze();
+            //    img.ImageSource = btm;
+            //}
         }
+
     }
 }
