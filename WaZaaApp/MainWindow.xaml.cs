@@ -78,7 +78,10 @@ namespace WaZaaApp
 
         private void Chatsbtm_Click(object sender, RoutedEventArgs e)
         {
-           
+            MenuUC menu = new MenuUC(usr);
+            Grd.Children.Add(menu);
+            Grid.SetRow(menu, 1);
+            Grid.SetColumn(menu, 1);
         }
     }
 }

@@ -16,8 +16,5 @@ namespace WaZaaApp
         public string Name { get; set; }
         public virtual ICollection<UsersChat> UsersChats { get; set; }
         public virtual ICollection<Message> Messages { get; set; }
-        //public virtual ICollection<User> Users { get; set; }
-        //[NotMapped]
-        //public virtual ICollection<Message> Messages { get; set; }
     }
 }
