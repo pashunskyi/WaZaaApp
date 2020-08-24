@@ -43,23 +43,71 @@ namespace WaZaaApp
         {
             using (AppContext ctx = new AppContext())
             {
+                bool b = false;
                 foreach (var item in ctx.Users)
                 {
                     if (item.Login == UsernameNewFrendTb.Text)
                     {
-                        //ctx.Users.Find(usr).UsersChats.Add(new UsersChat() { Chat = new Chat() {Name = item.Login + ", " + usr.Login } }) ;
-                        //ctx.UsersChats.Where(a => a.User == usr)
-                        ctx.UsersChats.Add(new UsersChat() {  Chat = new Chat() { Name = item.Login + ", " + usr.Login } });
+                        b = true;
                     }
                 }
-                //foreach (var item in ctx.Users)
-                //{
-                //    if (item == usr)
-                //    {
-                //        ctx.Users.Where(a => a.Login == usr.Login);
-                //        item.UsersChats.Add(new UsersChat().Chat.);
-                //    }
-                //}
+
+                if (b == true)
+                {
+                    
+                    var usr11 = ctx.Users.Where(c => c.Id == usr.Id).FirstOrDefault();
+                    var usr22 = ctx.Users.Where(c => c.Login == UsernameNewFrendTb.Text).FirstOrDefault();
+                    foreach (var item in ctx.UsersChats)
+                    {
+                        using (AppContext ctx2 = new AppContext())
+                        {
+                            foreach (var item2 in ctx2.UsersChats)
+                            {
+                                if (item.ChatId == item2.ChatId && item.UserId == usr11.Id && item2.UserId == usr22.Id ||
+                                    item.ChatId == item2.ChatId && item.UserId == usr22.Id && item2.UserId == usr11.Id)
+                                {
+                                    b = false;
+                                    MessageBox.Show("Такий чат вже є");
+                                }
+                                if (b == false)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                        if (b == false)
+                        {
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Такого користувача не знайдено");
+                }
+                if (b == true)
+                {
+                    var usr1 = ctx.Users.Where(c => c.Id == usr.Id).FirstOrDefault();
+                    var usr2 = ctx.Users.Where(c => c.Login == UsernameNewFrendTb.Text).FirstOrDefault();
+
+                    var chat = new Chat() { Name = usr1.Login + " " + usr2.Login };
+
+                    chat.UsersChats = new List<UsersChat>
+                    {
+                        new UsersChat
+                        {
+                            Chat = chat,
+                            User = usr1
+                        },
+                        new UsersChat
+                        {
+                            Chat = chat,
+                            User = usr2
+                        }
+                    };
+                    ctx.Chats.Add(chat);
+                    ctx.SaveChanges();
+                }
             }
         }
     }
