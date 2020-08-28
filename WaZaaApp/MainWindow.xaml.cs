@@ -18,18 +18,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WaZaaApp
 {
-    
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
         User usr = new User();
+        int menuindex = 0;
         public MainWindow()
         {
             InitializeComponent();
             OpenRegisterWindow();
-            
         }
         // перевірка чи увійшов користувач
         public void IsLogged()
@@ -75,13 +75,26 @@ namespace WaZaaApp
                 Application.Current.MainWindow.Width = 500;
             });
         }
-
+        //відкривання та закривання меню юзера
         private void Chatsbtm_Click(object sender, RoutedEventArgs e)
         {
-            MenuUC menu = new MenuUC(usr);
-            Grd.Children.Add(menu);
-            Grid.SetRow(menu, 1);
-            Grid.SetColumn(menu, 1);
+            
+            if(menuindex == 0)
+            {
+                DialogUC.Visibility = Visibility.Collapsed;
+                MenuUC menu = new MenuUC(usr);
+                Grd.Children.Add(menu);
+                Grid.SetRow(menu, 1);
+                Grid.SetColumn(menu, 1);
+                menu.Visibility = Visibility.Visible;
+                menuindex = Grd.Children.IndexOf(menu);
+            }
+            else
+            {
+                Grd.Children.RemoveAt(menuindex);
+                menuindex = 0;
+                DialogUC.Visibility = Visibility.Visible;
+            }
         }
     }
 }

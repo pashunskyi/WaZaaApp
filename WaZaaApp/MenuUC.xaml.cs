@@ -21,10 +21,12 @@ namespace WaZaaApp
     public partial class MenuUC : UserControl
     {
         public User usr { get; set; }
+
         public MenuUC(User u)
         {
             InitializeComponent();
-
+            
+            
             using (var ms = new System.IO.MemoryStream(u.Avatar))
             {
                 var image = new BitmapImage();
@@ -38,7 +40,8 @@ namespace WaZaaApp
             EmailTb.Text = u.Email.ToString();
             usr = u;
         }
-
+        
+        //добавлення контакту
         private void AddBtm_Click(object sender, RoutedEventArgs e)
         {
             using (AppContext ctx = new AppContext())
@@ -109,6 +112,7 @@ namespace WaZaaApp
                     ctx.SaveChanges();
                 }
             }
+            
         }
     }
 }
