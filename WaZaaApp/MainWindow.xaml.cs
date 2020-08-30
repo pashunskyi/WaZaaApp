@@ -43,6 +43,33 @@ namespace WaZaaApp
                 }
             }
             OpenUserWindow();
+            RefreshChatList();
+        }
+        public void RefreshChatList()
+        {
+            using (AppContext ctx = new AppContext())
+            {
+                foreach (var item in ctx.UsersChats)
+                {
+                    if (item.UserId == usr.Id)
+                    {
+                        using (AppContext ctx2 = new AppContext())
+                        {
+                            foreach (var item2 in ctx2.UsersChats)
+                            {
+                                if (item2.ChatId == item.ChatId && item2.UserId != usr.Id)
+                                {
+                                    Application.Current.Dispatcher.Invoke((Action)delegate
+                                    {
+                                        ChatsUC ch = new ChatsUC(item2.UserId);
+                                        StackChats.Children.Add(ch);
+                                    });
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         //відкрити вікно регістрації
         public void OpenRegisterWindow()
@@ -78,8 +105,8 @@ namespace WaZaaApp
         //відкривання та закривання меню юзера
         private void Chatsbtm_Click(object sender, RoutedEventArgs e)
         {
-            
-            if(menuindex == 0)
+
+            if (menuindex == 0)
             {
                 DialogUC.Visibility = Visibility.Collapsed;
                 MenuUC menu = new MenuUC(usr);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,9 +19,24 @@ namespace WaZaaApp
     /// </summary>
     public partial class ChatsUC : UserControl
     {
-        public ChatsUC()
+        public User usr { get; set; }
+        public ChatsUC(int userId)
         {
             InitializeComponent();
+            using (AppContext ctx = new AppContext())
+            {
+                usr = ctx.Users.Where(q => q.Id == userId).FirstOrDefault();
+            }
+            using (var ms = new System.IO.MemoryStream(usr.Avatar))
+            {
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = ms;
+                image.EndInit();
+                AvatarImg.ImageSource = image;
+            }
+            UsernameTb.Text = usr.Login;
         }
     }
 }

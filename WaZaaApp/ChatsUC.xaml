@@ -11,13 +11,13 @@
         <!--Зоображення-->
         <Ellipse Grid.ColumnSpan="2" Grid.RowSpan="5">
             <Ellipse.Fill>
-                <ImageBrush ImageSource="/rqoDpnCCrdpGFHM6qky3rS.jpg" Stretch="Fill"></ImageBrush>
+                <ImageBrush x:Name="AvatarImg" Stretch="Fill"></ImageBrush>
             </Ellipse.Fill>
         </Ellipse>
         <!--Нік-->
-        <TextBlock Text="Mr. Frog" TextAlignment="Left" FontSize="15" Foreground="#FF20EEDA" Grid.ColumnSpan="4" Grid.Column="2" Grid.RowSpan="2"></TextBlock>
+        <TextBlock x:Name="UsernameTb" Text="" TextAlignment="Left" FontSize="15" Foreground="#FF20EEDA" Grid.ColumnSpan="4" Grid.Column="2" Grid.RowSpan="2"></TextBlock>
         <!--Останнє повідомлення-->
-        <TextBlock Text="hi im from kekestan" TextAlignment="Left" Foreground="Gray" Grid.ColumnSpan="4" Grid.RowSpan="3" Grid.Column="2" Grid.Row="2"></TextBlock>
+        <TextBlock Text="" TextAlignment="Left" Foreground="Gray" Grid.ColumnSpan="4" Grid.RowSpan="3" Grid.Column="2" Grid.Row="2"></TextBlock>
         <!--Активна часина-->
         <Button Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Grid.ColumnSpan="6" Grid.RowSpan="5">
         </Button>

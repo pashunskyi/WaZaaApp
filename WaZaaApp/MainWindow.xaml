@@ -87,7 +87,7 @@
                     </Style.Triggers>
                 </Style>
             </StackPanel.Style>
-            <local:ChatsUC></local:ChatsUC>
+            <!--<local:ChatsUC></local:ChatsUC>-->
         </StackPanel>
 
 
