@@ -7,10 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="DefaultUser.jpg" />
     <None Remove="menu.png" />
-    <None Remove="rqoDpnCCrdpGFHM6qky3rS.jpg" />
-    <None Remove="send.png" />
+    <None Remove="UserControls\DefaultUser.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,11 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="DefaultUser.jpg" />
     <Resource Include="Icons\menu.png" />
-    <Resource Include="Icons\rqoDpnCCrdpGFHM6qky3rS.jpg" />
-    <Resource Include="rqoDpnCCrdpGFHM6qky3rS.jpg" />
-    <Resource Include="send.png" />
+    <Resource Include="UserControls\DefaultUser.jpg" />
   </ItemGroup>
 
 </Project>

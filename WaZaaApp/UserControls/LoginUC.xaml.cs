@@ -23,16 +23,18 @@ namespace WaZaaApp
     /// </summary>
     public partial class LoginUC : UserControl
     {
+        public byte[] ava;
+        public User u { get; set; }
         public LoginUC()
         {
             InitializeComponent();
-
+            
+            
         }
-        public byte[] ava;
-        public User u { get; set; }
         //регістрація
         private void LogInBtm_Click(object sender, RoutedEventArgs e)
         {
+
             if (IsSameLogin() == true && IsloginNotNull() == true && IsRegisterPasswordCorrect() == true && IsAvatarSelect() == true)
             {
                 using (AppContext ctx = new AppContext())

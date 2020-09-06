@@ -18,10 +18,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WaZaaApp
 {
-
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         User usr = new User();
@@ -45,8 +41,17 @@ namespace WaZaaApp
             OpenUserWindow();
             RefreshChatList();
         }
+        //оновлення чатів
         public void RefreshChatList()
         {
+            
+            this.Dispatcher.Invoke(() =>
+            {
+                if (StackChats.Children.Count > 0)
+                {
+                    StackChats.Children.Clear();
+                }
+            });
             using (AppContext ctx = new AppContext())
             {
                 foreach (var item in ctx.UsersChats)
@@ -82,7 +87,7 @@ namespace WaZaaApp
             StackChats.Visibility = Visibility.Hidden;
             UpperLine.Visibility = Visibility.Hidden;
             Application.Current.MainWindow.Height = 190;
-            Application.Current.MainWindow.Width = 500;
+            Application.Current.MainWindow.Width = 550;
             Thread myThread = new Thread(IsLogged);
             myThread.Start();
         }
@@ -105,11 +110,10 @@ namespace WaZaaApp
         //відкривання та закривання меню юзера
         private void Chatsbtm_Click(object sender, RoutedEventArgs e)
         {
-
             if (menuindex == 0)
             {
                 DialogUC.Visibility = Visibility.Collapsed;
-                MenuUC menu = new MenuUC(usr);
+                MenuUC menu = new MenuUC(usr.Id);
                 Grd.Children.Add(menu);
                 Grid.SetRow(menu, 1);
                 Grid.SetColumn(menu, 1);
@@ -121,6 +125,7 @@ namespace WaZaaApp
                 Grd.Children.RemoveAt(menuindex);
                 menuindex = 0;
                 DialogUC.Visibility = Visibility.Visible;
+                RefreshChatList();
             }
         }
     }
