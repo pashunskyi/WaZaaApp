@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,10 +20,50 @@ namespace WaZaaApp
     {
         public User usr { get; set; }
 
+        public delegate int DisplayHandler();
         public MenuUC(int id)
         {
             InitializeComponent();
-            RefreshMenu(id);
+            using (AppContext ctx = new AppContext())
+            {
+                var u = ctx.Users.Where(q => q.Id == id).FirstOrDefault();
+                using (var ms = new System.IO.MemoryStream(u.Avatar))
+                {
+                    var image = new BitmapImage();
+                    image.BeginInit();
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.StreamSource = ms;
+                    image.EndInit();
+                    img.ImageSource = image;
+                }
+                UsernameTb.Text = u.Login.ToString();
+                EmailTb.Text = u.Email.ToString();
+                usr = u;
+            }
+        }
+        public void RefreshAvatar()
+        {
+            using (AppContext ctx = new AppContext())
+            {
+                var u = ctx.Users.Where(q => q.Id == usr.Id).FirstOrDefault();
+                using (var ms = new System.IO.MemoryStream(u.Avatar))
+                {
+                    var image = new BitmapImage();
+                    image.BeginInit();
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.StreamSource = ms;
+                    image.EndInit();
+                    img.ImageSource = image;
+                }
+            }
+        }
+        public void RefreshUsername()
+        {
+            using (AppContext ctx = new AppContext())
+            {
+                var u = ctx.Users.Where(q => q.Id == usr.Id).FirstOrDefault();
+                UsernameTb.Text = u.Login.ToString();
+            }
         }
         public void RefreshMenu(int id)
         {
@@ -127,7 +168,7 @@ namespace WaZaaApp
                     u.Login = NewUsernameTb.Text;
                     ctx.SaveChanges();
                 }
-                RefreshMenu(usr.Id);
+                RefreshUsername();
             }
         }
         //перевірка чи нік не пустий або не перевищує кількість допустимих символів і чи є вони допустимі
@@ -196,7 +237,7 @@ namespace WaZaaApp
                     u.Avatar = data;
                     ctx.SaveChanges();
                 }
-                RefreshMenu(usr.Id);
+                RefreshAvatar();
             }
         }
     }

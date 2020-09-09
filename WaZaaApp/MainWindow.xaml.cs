@@ -20,12 +20,41 @@ namespace WaZaaApp
 {
     public partial class MainWindow : Window
     {
-        User usr = new User();
+        public User usr { get; set; }
         int menuindex = 0;
         public MainWindow()
         {
             InitializeComponent();
             OpenRegisterWindow();
+            Thread myThread = new Thread(DynamicUpdateChats);
+            myThread.Start();
+
+        }
+        void DynamicUpdateChats()
+        {
+            while (true)
+            {
+                if (usr != null)
+                {
+
+                    using (AppContext ctx = new AppContext())
+                    {
+                        int i = 0;
+                        int q = 0;
+                        i = ctx.UsersChats.Where(q => q.UserId == usr.Id).Count();
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            q = Int32.Parse(StackChats.Children.Count.ToString());
+                        });
+                        if (i != q)
+                        {
+                            RefreshChatList();
+                        }
+
+                    }
+                }
+                Thread.Sleep(1000);
+            }
         }
         // перевірка чи увійшов користувач
         public void IsLogged()
@@ -39,12 +68,11 @@ namespace WaZaaApp
                 }
             }
             OpenUserWindow();
-            RefreshChatList();
         }
         //оновлення чатів
         public void RefreshChatList()
         {
-            
+
             this.Dispatcher.Invoke(() =>
             {
                 if (StackChats.Children.Count > 0)
@@ -119,13 +147,16 @@ namespace WaZaaApp
                 Grid.SetColumn(menu, 1);
                 menu.Visibility = Visibility.Visible;
                 menuindex = Grd.Children.IndexOf(menu);
+
+
+
+
             }
             else
             {
                 Grd.Children.RemoveAt(menuindex);
                 menuindex = 0;
                 DialogUC.Visibility = Visibility.Visible;
-                RefreshChatList();
             }
         }
     }
