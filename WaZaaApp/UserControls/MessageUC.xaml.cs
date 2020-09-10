@@ -14,20 +14,13 @@ using System.Windows.Shapes;
 namespace WaZaaApp
 {
     /// <summary>
-    /// Interaction logic for DialogUC.xaml
+    /// Interaction logic for MessageUC.xaml
     /// </summary>
-    public partial class DialogUC : UserControl
+    public partial class MessageUC : UserControl
     {
-        public DialogUC()
+        public MessageUC()
         {
             InitializeComponent();
-            var a = new MessageUC();
-            a.HorizontalAlignment = HorizontalAlignment.Left;
-            var b = new MessageUC();
-            b.HorizontalAlignment = HorizontalAlignment.Right;
-            StackPanelCh.Children.Add(a);
-            StackPanelCh.Children.Add(b);
-
         }
     }
 }

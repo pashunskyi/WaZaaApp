@@ -28,8 +28,10 @@ namespace WaZaaApp
             OpenRegisterWindow();
             Thread myThread = new Thread(DynamicUpdateChats);
             myThread.Start();
+            
 
         }
+        //динамічне оновлення чатів
         void DynamicUpdateChats()
         {
             while (true)
@@ -45,6 +47,7 @@ namespace WaZaaApp
                         this.Dispatcher.Invoke(() =>
                         {
                             q = Int32.Parse(StackChats.Children.Count.ToString());
+                            
                         });
                         if (i != q)
                         {

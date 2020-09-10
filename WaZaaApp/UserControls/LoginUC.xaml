@@ -22,13 +22,8 @@
                 <ImageBrush x:Name="RegisterAvatarImg"
                             
                             Stretch="Fill" ImageSource="/UserControls/DefaultUser.jpg">
-                    
-                </ImageBrush>
-                <!--<ImageBrush x:Name="RegisterAvatarImg"
-                            ImageSource="/Icons/DefaultUser.jpg"
-                            Stretch="Fill">
 
-                </ImageBrush>-->
+                </ImageBrush>
             </Ellipse.Fill>
         </Ellipse>
         <Button x:Name="SelectIamgeBtm"

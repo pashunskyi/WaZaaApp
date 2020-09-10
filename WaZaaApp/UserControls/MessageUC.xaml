@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="WaZaaApp.MessageUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:WaZaaApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="240" Background="{x:Null}">
+    <Grid>
+
+        <Border Grid.Column="1" Grid.ColumnSpan="4" Padding="5" BorderThickness="1"  Background="#FF282E33" CornerRadius="10" Grid.RowSpan="4">
+
+            <TextBlock Background="#FF282E33"  Grid.Row="1" TextWrapping ="Wrap"  Text="qqqqqqqqqqq qqqqqqqq qqqqq qqqqqqqqqqqqqqqqqqq qqqqqqqqqqqqqqqqqqqqqqq qqqqqqq qqqqqqqqqqqq" Foreground="white" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,0,55,0"></TextBlock>
+        </Border>
+        <materialDesign:PopupBox Grid.Column="3"
+        Foreground="White" Grid.ColumnSpan="2" Margin="10,0,0,0" Grid.RowSpan="2" Width="30" Height="25" VerticalAlignment="Top" >
+            <StackPanel>
+                <Button
+            Content="Edit" />
+                <Button
+            Content="Delete" />
+            </StackPanel>
+        </materialDesign:PopupBox>
+        <materialDesign:PackIcon Foreground="#FF20EEDA" Width="20" Height="20" Kind="Check" Grid.Column="2" Grid.RowSpan="1" HorizontalAlignment="Stretch" />
+        <materialDesign:PackIcon Foreground="Red" Kind="Close" Grid.Column="3" Width="20" Height="20" HorizontalAlignment="Stretch" Grid.RowSpan="1" />
+
+
+
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="170"></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+    </Grid>
+</UserControl>

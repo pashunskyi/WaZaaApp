@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -37,6 +38,43 @@ namespace WaZaaApp
                 AvatarImg.ImageSource = image;
             }
             UsernameTb.Text = usr.Login;
+            Thread myThread = new Thread(DynamicUpdateChat);
+            myThread.Start();
         }
+        //динамічне оновлення чату
+        void DynamicUpdateChat()
+        {
+            while (true)
+            {
+                if (usr != null)
+                {
+
+                    using (AppContext ctx = new AppContext())
+                    {
+                        var u = ctx.Users.Where(q => q.Id == usr.Id).FirstOrDefault();
+                        if(u.Login != usr.Login || u.Avatar != usr.Avatar)
+                        {
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                using (var ms = new System.IO.MemoryStream(u.Avatar))
+                                {
+                                    var image = new BitmapImage();
+                                    image.BeginInit();
+                                    image.CacheOption = BitmapCacheOption.OnLoad;
+                                    image.StreamSource = ms;
+                                    image.EndInit();
+                                    AvatarImg.ImageSource = image;
+                                }
+                                UsernameTb.Text = u.Login;
+                            });
+                            usr = u;
+                            
+                        }
+                    }
+                }
+                Thread.Sleep(3000);
+            }
+        }
+       
     }
 }
