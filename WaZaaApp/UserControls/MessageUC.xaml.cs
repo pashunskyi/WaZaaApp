@@ -18,9 +18,14 @@ namespace WaZaaApp
     /// </summary>
     public partial class MessageUC : UserControl
     {
-        public MessageUC()
+        public User thisUser { get; set; }
+        public Message mes { get; set; }
+        public MessageUC(Message message, User user)
         {
             InitializeComponent();
+            MessageTb.Text = message.Text;
+            mes = message;
+            thisUser = user;
         }
     }
 }

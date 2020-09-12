@@ -49,8 +49,8 @@
                 TextAlignment="Center"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                 Margin="16,0,0,0"
-                Text="text">
+                 Margin="250,0,0,0"
+                Text="">
 
             </TextBlock>
         </StackPanel>

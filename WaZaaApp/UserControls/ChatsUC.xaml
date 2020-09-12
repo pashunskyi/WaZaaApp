@@ -19,7 +19,7 @@
         <!--Останнє повідомлення-->
         <TextBlock Text="" TextAlignment="Left" Foreground="Gray" Grid.ColumnSpan="4" Grid.RowSpan="3" Grid.Column="2" Grid.Row="2"></TextBlock>
         <!--Активна часина-->
-        <Button Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Grid.ColumnSpan="6" Grid.RowSpan="5">
+        <Button Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Grid.ColumnSpan="6" Grid.RowSpan="5" Click="Button_Click">
         </Button>
         <!--Сітка-->
         <Grid.ColumnDefinitions>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static WaZaaApp.MainWindow;
 
 namespace WaZaaApp
 {
@@ -20,8 +21,9 @@ namespace WaZaaApp
     /// </summary>
     public partial class ChatsUC : UserControl
     {
+        DelegateUser del;
         public User usr { get; set; }
-        public ChatsUC(int userId)
+        public ChatsUC(int userId, DelegateUser delUser)
         {
             InitializeComponent();
             using (AppContext ctx = new AppContext())
@@ -40,6 +42,7 @@ namespace WaZaaApp
             UsernameTb.Text = usr.Login;
             Thread myThread = new Thread(DynamicUpdateChat);
             myThread.Start();
+            del = delUser;
         }
         //динамічне оновлення чату
         void DynamicUpdateChat()
@@ -75,6 +78,10 @@ namespace WaZaaApp
                 Thread.Sleep(3000);
             }
         }
-       
+        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            del(usr);
+        }
     }
 }

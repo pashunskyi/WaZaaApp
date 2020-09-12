@@ -38,7 +38,6 @@ namespace WaZaaApp
             {
                 if (usr != null)
                 {
-
                     using (AppContext ctx = new AppContext())
                     {
                         int i = 0;
@@ -53,7 +52,6 @@ namespace WaZaaApp
                         {
                             RefreshChatList();
                         }
-
                     }
                 }
                 Thread.Sleep(1000);
@@ -72,6 +70,36 @@ namespace WaZaaApp
             }
             OpenUserWindow();
         }
+        public void ShowUserDialog(User contact)
+        {
+            NameOfCurrentChat.Text = contact.Login;
+            using (AppContext ctx = new AppContext())
+            {
+                foreach (var item in ctx.UsersChats)
+                {
+                    if (item.UserId == usr.Id)
+                    {
+                        using (AppContext ctx2 = new AppContext())
+                        {
+                            foreach (var item2 in ctx2.UsersChats)
+                            {
+                                if (item2.ChatId == item.ChatId && item2.UserId == contact.Id)
+                                {
+                                    using (AppContext ctx3 = new AppContext())
+                                    {
+                                        var currentChat = ctx3.Chats.Where(q => q.Id == item2.ChatId).FirstOrDefault();
+                                        DialogUC.CurrentChat = currentChat;
+                                        DialogUC.usr = usr;
+                                        DialogUC.usr2 = contact;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        public delegate void DelegateUser(User u);
         //оновлення чатів
         public void RefreshChatList()
         {
@@ -97,7 +125,10 @@ namespace WaZaaApp
                                 {
                                     Application.Current.Dispatcher.Invoke((Action)delegate
                                     {
-                                        ChatsUC ch = new ChatsUC(item2.UserId);
+                                        DelegateUser d = new DelegateUser(ShowUserDialog);
+
+                                        ChatsUC ch = new ChatsUC(item2.UserId, d);
+                                        
                                         StackChats.Children.Add(ch);
                                     });
                                 }
@@ -150,10 +181,6 @@ namespace WaZaaApp
                 Grid.SetColumn(menu, 1);
                 menu.Visibility = Visibility.Visible;
                 menuindex = Grd.Children.IndexOf(menu);
-
-
-
-
             }
             else
             {
