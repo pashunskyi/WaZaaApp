@@ -26,7 +26,6 @@ namespace WaZaaApp
         public DialogUC()
         {
             InitializeComponent();
-            
             Thread myThread = new Thread(DynamicUpdateDialog);
             myThread.Start();
         }
@@ -68,7 +67,10 @@ namespace WaZaaApp
                     }
                 }
             }
-            ScrollViver.ScrollToBottom();
+            this.Dispatcher.Invoke(() =>
+            {
+                ScrollViver.ScrollToBottom();
+            });
             return Mesid;
         }
         public void DynamicUpdateDialog()
@@ -134,22 +136,28 @@ namespace WaZaaApp
                 Thread.Sleep(1000);
             }
         }
+        
         private void SendBtm_Click(object sender, RoutedEventArgs e)
         {
             if (MessageTb.Text != "")
             {
-                using (AppContext ctx = new AppContext())
+                if (usr != null)
                 {
-                    var tempusr = ctx.Users.Where(c => c.Id == usr.Id).FirstOrDefault();
-                    var tempchat = ctx.Chats.Where(q => q.Id == CurrentChat.Id).FirstOrDefault();
-                    Message mes = new Message();
-                    mes.Chat = tempchat;
-                    mes.User = tempusr;
-                    mes.Text = MessageTb.Text;
-                    ctx.Messages.Add(mes);
-                    ctx.SaveChanges();
+
+                    using (AppContext ctx = new AppContext())
+                    {
+                        var tempusr = ctx.Users.Where(c => c.Id == usr.Id).FirstOrDefault();
+                        var tempchat = ctx.Chats.Where(q => q.Id == CurrentChat.Id).FirstOrDefault();
+                        Message mes = new Message();
+                        mes.Chat = tempchat;
+                        mes.User = tempusr;
+                        mes.Text = MessageTb.Text;
+                        ctx.Messages.Add(mes);
+                        ctx.SaveChanges();
+                    }
+                    MessageTb.Text = "";
+                    MessageTb.Focus();
                 }
-                MessageTb.Text = "";
             }
         }
     }

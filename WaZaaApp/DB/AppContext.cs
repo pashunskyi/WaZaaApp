@@ -21,7 +21,6 @@ namespace WaZaaApp
             optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=WaZaaAppDB2;Trusted_Connection=True;");
         }
         public  DbSet<Chat> Chats { get; set; }
-        //public  DbSet<Message> Messages { get; set; }
         public  DbSet<User> Users { get; set; }
         public DbSet<UsersChat> UsersChats { get; set; }
         public DbSet<Message> Messages { get; set; }

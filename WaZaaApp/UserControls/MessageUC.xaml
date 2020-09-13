@@ -6,25 +6,29 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:WaZaaApp"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="240" Background="{x:Null}">
+             d:DesignHeight="50" d:DesignWidth="240" Background="{x:Null}" x:Name="MessageUCn">
     <Grid>
 
-        <Border Grid.Column="1" Grid.ColumnSpan="4" Padding="5" BorderThickness="1"  Background="#FF282E33" CornerRadius="10" Grid.RowSpan="4">
-
-            <TextBlock x:Name="MessageTb" Background="#FF282E33"  Grid.Row="1" TextWrapping ="Wrap"  Text="qqqqqqqqqqq qqqqqqqq qqqqq qqqqqqqqqqqqqqqqqqq qqqqqqqqqqqqqqqqqqqqqqq qqqqqqq qqqqqqqqqqqq" Foreground="white" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,0,55,0"></TextBlock>
+        <Border x:Name="BorderMes" Grid.Column="1" Grid.ColumnSpan="4" Padding="5" BorderThickness="1"  Background="#FF282E33" CornerRadius="10" Grid.RowSpan="4">
+            
+            <TextBlock x:Name="MessageTb" Background="#FF282E33"  Grid.Row="1" TextWrapping ="Wrap"  Text="" Foreground="white" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,0,55,0"></TextBlock>
         </Border>
+        <TextBox Visibility="Collapsed" Foreground="white" TextWrapping ="Wrap" x:Name="EditTb" Grid.Column="1" Grid.RowSpan="2"/>
         <materialDesign:PopupBox x:Name="BoxMore" Grid.Column="3"
         Foreground="White" Grid.ColumnSpan="2" Margin="10,0,0,0" Grid.RowSpan="2" Width="30" Height="25" VerticalAlignment="Top" >
             <StackPanel>
                 <Button
-            Content="Edit" />
+                    Content="Edit"
+                    Click="Edit_Click"/>
                 <Button
-            Content="Delete" />
+                    Content="Delete" 
+                    Click="Delete_Click"/>
             </StackPanel>
         </materialDesign:PopupBox>
-        <materialDesign:PackIcon x:Name="OkIcon" Foreground="#FF20EEDA" Width="20" Height="20" Kind="Check" Grid.Column="2" Grid.RowSpan="1" HorizontalAlignment="Stretch" />
-        <materialDesign:PackIcon x:Name="CanselIcon" Foreground="Red" Kind="Close" Grid.Column="3" Width="20" Height="20" HorizontalAlignment="Stretch" Grid.RowSpan="1" />
-
+        <materialDesign:PackIcon Visibility="Collapsed" x:Name="OkIcon" Foreground="#FF20EEDA" Width="20" Height="20" Kind="Check" Grid.Column="2" Grid.RowSpan="1" HorizontalAlignment="Stretch" />
+        <materialDesign:PackIcon Visibility="Collapsed" x:Name="CanselIcon" Foreground="Red" Kind="Close" Grid.Column="3" Width="20" Height="20" HorizontalAlignment="Stretch" Grid.RowSpan="1" />
+        <Button Visibility="Collapsed" Background="{x:Null}" BorderBrush="{x:Null}" x:Name="CancelBtm" Height="20" Grid.Column="3" Click="CancelBtm_Click"/>
+        <Button Visibility="Collapsed" Background="{x:Null}" BorderBrush="{x:Null}" x:Name="ConfirmBtm" Height="20" Grid.Column="2" Click="ConfirmBtm_Click"/>
 
 
 
