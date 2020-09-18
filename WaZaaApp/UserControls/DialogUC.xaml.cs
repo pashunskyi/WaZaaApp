@@ -29,6 +29,7 @@ namespace WaZaaApp
             Thread myThread = new Thread(DynamicUpdateDialog);
             myThread.Start();
         }
+        //оновлення діалогу
         public List<int> RefreshDialog(List<int> Mesid)
         {
             if (Mesid != null)
@@ -73,6 +74,7 @@ namespace WaZaaApp
             });
             return Mesid;
         }
+        //динамічна зміна діалогу
         public void DynamicUpdateDialog()
         {
             List<int> Mesid = new List<int>();
@@ -136,7 +138,7 @@ namespace WaZaaApp
                 Thread.Sleep(1000);
             }
         }
-        
+        //кнопка відправлення повідомлення
         private void SendBtm_Click(object sender, RoutedEventArgs e)
         {
             if (MessageTb.Text != "")

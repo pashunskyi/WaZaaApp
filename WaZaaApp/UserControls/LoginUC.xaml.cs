@@ -28,10 +28,8 @@ namespace WaZaaApp
         public LoginUC()
         {
             InitializeComponent();
-            
-            
         }
-        //регістрація
+        //кнопка регістрації
         private void LogInBtm_Click(object sender, RoutedEventArgs e)
         {
 
@@ -57,11 +55,10 @@ namespace WaZaaApp
                         }
                     }
                 }
-
                 PasswordTb.Password = "";
             }
         }
-        //вхід
+        //кнопка входу
         private void SignInBtm_Click(object sender, RoutedEventArgs e)
         {
 
@@ -77,7 +74,7 @@ namespace WaZaaApp
                     }
                 }
             }
-            MessageBox.Show("логін чи пароль не вірні");
+            MessageBox.Show("Username or password is incorrect");
         }
         //перевірка чи вибраний аватар
         public bool IsAvatarSelect()
@@ -88,7 +85,7 @@ namespace WaZaaApp
             }
             else
             {
-                MessageBox.Show("Виберіть свій аватар");
+                MessageBox.Show("Choose your avatar");
                 return false;
             }
         }
@@ -107,17 +104,17 @@ namespace WaZaaApp
             }
             if (b == true)
             {
-                MessageBox.Show("В логіні є не домустимі символи");
+                MessageBox.Show("There are invalid characters in the username");
                 return false;
             }
             else if (LoginTb.Text.Length > 20)
             {
-                MessageBox.Show("Максимальна кількість символів для логіну 20");
+                MessageBox.Show("The maximum number of characters for username is 20");
                 return false;
             }
             if (string.IsNullOrEmpty(LoginTb.Text))
             {
-                MessageBox.Show("Введіть логін");
+                MessageBox.Show("Enter your username");
                 return false;
             }
             else
@@ -134,7 +131,7 @@ namespace WaZaaApp
                 {
                     if (item.Login == LoginTb.Text)
                     {
-                        MessageBox.Show("Такий нік уже зареєстрований");
+                        MessageBox.Show("Such a nickname is already registered");
                         return false;
                     }
                 }
@@ -156,17 +153,17 @@ namespace WaZaaApp
             }
             if (b == true)
             {
-                MessageBox.Show("В паролі є не домустимі символи");
+                MessageBox.Show("There are invalid characters in the password");
                 return false;
             }
             else if (PasswordTb.Password.Length > 200)
             {
-                MessageBox.Show("Максимальна кількість символів для пароля 200");
+                MessageBox.Show("The maximum number of characters for a password is 200");
                 return false;
             }
             else if (PasswordTb.Password.Length < 5 || string.IsNullOrEmpty(PasswordTb.Password))
             {
-                MessageBox.Show("Короткий пароль. Мінімальна кількість символів 6");
+                MessageBox.Show("Short password. The minimum number of characters is 6");
                 return false;
             }
             return true;
@@ -185,11 +182,6 @@ namespace WaZaaApp
                 RegisterAvatarImg.ImageSource = new BitmapImage(new Uri(filename, UriKind.Absolute));
                 ava = data;
             }
-
         }
-
-
-
     }
-
 }

@@ -78,7 +78,7 @@ namespace WaZaaApp
                 Thread.Sleep(3000);
             }
         }
-        
+        //вибір чату
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             del(usr);

@@ -31,6 +31,7 @@ namespace WaZaaApp
             Thread myThread = new Thread(DynamicUpdateMessage);
             myThread.Start();
         }
+        //динамічне оновлення повідомлення
         public void DynamicUpdateMessage()
         {
             while (true)
@@ -61,6 +62,7 @@ namespace WaZaaApp
                 Thread.Sleep(1000);
             }
         }
+        //кнопка видалення
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             using (AppContext ctx = new AppContext())
@@ -70,6 +72,7 @@ namespace WaZaaApp
                 ctx.SaveChanges();
             }
         }
+        //кнопка редагування
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
             OkIcon.Visibility = Visibility.Visible;
@@ -81,6 +84,7 @@ namespace WaZaaApp
             EditTb.Text = MessageTb.Text;
             EditTb.Focus();
         }
+        //кнопка підтвердження
         private void ConfirmBtm_Click(object sender, RoutedEventArgs e)
         {
             using (AppContext ctx = new AppContext())
@@ -96,7 +100,7 @@ namespace WaZaaApp
             MessageTb.Visibility = Visibility.Visible;
             EditTb.Visibility = Visibility.Collapsed;
         }
-
+        //кнопка скасування
         private void CancelBtm_Click(object sender, RoutedEventArgs e)
         {
             ConfirmBtm.Visibility = Visibility.Collapsed;

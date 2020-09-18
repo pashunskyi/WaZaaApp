@@ -7,13 +7,33 @@
                mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="400">
     <Grid>
-        <Image x:Name="SendImg" Source="/UserControls/send.png" Grid.Column="6" Grid.Row="8" />
-        <TextBox x:Name="MessageTb" VerticalContentAlignment="Bottom" Grid.Row="8" Grid.ColumnSpan="6"/>
-        <ScrollViewer x:Name="ScrollViver" Grid.ColumnSpan="7">
-
-            <StackPanel x:Name="StackPanelCh" Grid.ColumnSpan="7"/>
+        <!--картинка відправки-->
+        <Image x:Name="SendImg"
+               Source="/UserControls/send.png"
+               Grid.Column="6"
+               Grid.Row="8" />
+        <!--поле для вводу повідомлення-->
+        <TextBox x:Name="MessageTb"
+                 VerticalContentAlignment="Bottom"
+                 Grid.Row="8"
+                 Grid.ColumnSpan="6"/>
+        <!--скрол-->
+        <ScrollViewer x:Name="ScrollViver" 
+                      Grid.ColumnSpan="7">
+            <!--панель з повідомленнями-->
+            <StackPanel x:Name="StackPanelCh"
+                        Grid.ColumnSpan="7"/>
         </ScrollViewer>
-        <Button x:Name="SendBtm" Height="50" Width="50" Grid.Column="6" Grid.Row="8" Background="{x:Null}" Foreground="{x:Null}" BorderBrush="{x:Null}" Click="SendBtm_Click">
+        <!--кнопка відправки повідомлення-->
+        <Button x:Name="SendBtm"
+                Height="50" 
+                Width="50" 
+                Grid.Column="6"
+                Grid.Row="8"
+                Background="{x:Null}"
+                Foreground="{x:Null}"
+                BorderBrush="{x:Null}"
+                Click="SendBtm_Click">
             
         </Button>
         <Grid.ColumnDefinitions>

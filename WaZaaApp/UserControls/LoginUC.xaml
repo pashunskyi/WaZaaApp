@@ -16,16 +16,18 @@
              d:DesignHeight="150" d:DesignWidth="500">
 
     <Grid Height="150" Width="500">
+        <!--зоображення аватару-->
         <Ellipse  Grid.Column="3"
-                  Grid.RowSpan="3">
+                  Grid.RowSpan="2">
             <Ellipse.Fill>
                 <ImageBrush x:Name="RegisterAvatarImg"
-                            
-                            Stretch="Fill" ImageSource="/UserControls/DefaultUser.jpg">
+                            Stretch="Fill"
+                            ImageSource="/UserControls/DefaultUser.jpg">
 
                 </ImageBrush>
             </Ellipse.Fill>
         </Ellipse>
+        <!--кнопка зміни аватару-->
         <Button x:Name="SelectIamgeBtm"
                 Height="110"
                 Width="auto"
@@ -33,16 +35,62 @@
                 BorderBrush="{x:Null}"
                 Click="SelectIamgeBtm_Click"
                 Grid.Column="3"
-                Grid.RowSpan="3" >
+                Grid.RowSpan="2" >
 
         </Button>
-
-
-        <TextBox x:Name="EmailTb" materialDesign:HintAssist.Hint="Email" Grid.ColumnSpan="3" Height="auto" VerticalAlignment="Center" VerticalContentAlignment="Bottom"/>
-        <TextBox x:Name="LoginTb" materialDesign:HintAssist.Hint="Username" Grid.ColumnSpan="3" Height="auto" VerticalAlignment="Center" VerticalContentAlignment="Bottom" Grid.Row="1"/>
-        <PasswordBox x:Name="PasswordTb" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:HintAssist.Hint="Password"  Height="auto" Grid.Row="2" Grid.ColumnSpan="3" VerticalContentAlignment="Bottom" VerticalAlignment="Center" />
-        <Button x:Name="SignInBtm" Style="{StaticResource MaterialDesignRaisedDarkButton}" Background="#FF282E33" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Foreground="#FF20EEDA" BorderBrush="{x:Null}" Height="37" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" Click="SignInBtm_Click" >Sign in</Button>
-        <Button x:Name="LogInBtm" Style="{StaticResource MaterialDesignRaisedDarkButton}" Background="#FF282E33" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Foreground="#FF20EEDA" BorderBrush="{x:Null}" Grid.ColumnSpan="2" Grid.Column="2" Height="37" Grid.Row="3" Click="LogInBtm_Click" >Log in</Button>
+        <!--поле для пошти-->
+        <TextBox Visibility="Collapsed"
+                 x:Name="EmailTb"
+                 materialDesign:HintAssist.Hint="Email"
+                 Grid.ColumnSpan="3"
+                 Height="auto"
+                 VerticalAlignment="Center"
+                 VerticalContentAlignment="Bottom"/>
+        <!--поле для логіну-->
+        <TextBox x:Name="LoginTb"
+                 materialDesign:HintAssist.Hint="Username"
+                 Grid.ColumnSpan="3"
+                 Height="auto"
+                 VerticalAlignment="Center"
+                 VerticalContentAlignment="Bottom"
+                 Grid.Row="0"/>
+        <!--поле для пароля-->
+        <PasswordBox x:Name="PasswordTb"
+                     materialDesign:TextFieldAssist.HasClearButton="True"
+                     materialDesign:HintAssist.Hint="Password"
+                     Height="auto"
+                     Grid.Row="1"
+                     Grid.ColumnSpan="3"
+                     VerticalContentAlignment="Bottom"
+                     VerticalAlignment="Center" />
+        <!--кнопка входу-->
+        <Button x:Name="SignInBtm"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Background="#FF282E33"
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                Foreground="#FF20EEDA" 
+                BorderBrush="{x:Null}" 
+                Height="37"
+                Grid.Row="3"
+                Grid.ColumnSpan="2" 
+                VerticalAlignment="Center"
+                Click="SignInBtm_Click">
+                Sign in
+        </Button>
+        <!--кнопка регістрації-->
+        <Button x:Name="LogInBtm"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Background="#FF282E33"
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                Foreground="#FF20EEDA"
+                BorderBrush="{x:Null}"
+                Grid.ColumnSpan="2"
+                Grid.Column="2"
+                Height="37"
+                Grid.Row="3"
+                Click="LogInBtm_Click" >
+                Log in
+        </Button>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -51,9 +99,9 @@
             <ColumnDefinition Width="105"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="35"></RowDefinition>
-            <RowDefinition Height="35"></RowDefinition>
-            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="52"></RowDefinition>
+            <RowDefinition Height="52"></RowDefinition>
+            <!--<RowDefinition Height="35"></RowDefinition>-->
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
     </Grid>

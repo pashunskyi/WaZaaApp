@@ -16,15 +16,16 @@
         
         Title="WaZaaaap" Height="190" Width="500" MinHeight="190" MinWidth="500" >
     <Grid x:Name="Grd" Background="#FF18191D">
-        
-        
         <local:LoginUC
             x:Name="LoginUC"
             Visibility="Collapsed"
             Grid.RowSpan="9"
             Grid.ColumnSpan="8"/>
         <!--Діалог-->
-        <local:DialogUC x:Name="DialogUC" Grid.Column="1" Grid.Row="1"/>
+        <local:DialogUC 
+            x:Name="DialogUC"
+            Grid.Column="1"
+            Grid.Row="1"/>
         <!--Верхня панель-->
         <StackPanel  
             x:Name="UpperLine"
@@ -32,8 +33,10 @@
             Orientation="Horizontal"
             MinWidth="50"
             Grid.ColumnSpan="8">
-            <!--Кнопка меню-->
-            <Image x:Name="MenuBtbImage" Source="/Icons/menu.png"  />
+            <!--іконка меню-->
+            <Image x:Name="MenuBtbImage"
+                   Source="/Icons/menu.png"  />
+            <!--кнопка меню-->
             <Button
                 x:Name="Chatsbtm"  
                 Margin="-50,0,0,0"
@@ -44,6 +47,7 @@
                 Background="{x:Null}"
                 BorderBrush="{x:Null}" Click="Chatsbtm_Click" >
             </Button>
+            <!--відображення поточнго чату-->
             <TextBlock 
                 x:Name="NameOfCurrentChat"
                 TextAlignment="Center"
@@ -51,19 +55,15 @@
                 VerticalAlignment="Center"
                  Margin="50,0,0,0"
                 Text="">
-
             </TextBlock>
         </StackPanel>
-
         <!--Бокова панель-->
         <StackPanel 
             x:Name="StackChats"
             Background="#FF282E33"
             Grid.RowSpan="8"
             Grid.Row="1"
-            Width="50"
-            
-            >
+            Width="50">
             <StackPanel.Style>
                 <Style TargetType="StackPanel">
                     <Style.Triggers>
@@ -71,14 +71,24 @@
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation To="200" Duration="0:0:0.300"  Storyboard.TargetProperty="Width"></DoubleAnimation>
+                                        <DoubleAnimation 
+                                            To="200" 
+                                            Duration="0:0:0.300" 
+                                            Storyboard.TargetProperty="Width">
+
+                                        </DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
                             <Trigger.ExitActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation To="50" Duration="0:0:0.300" Storyboard.TargetProperty="Width" ></DoubleAnimation>
+                                        <DoubleAnimation 
+                                            To="50" 
+                                            Duration="0:0:0.300" 
+                                            Storyboard.TargetProperty="Width" >
+
+                                        </DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
@@ -87,8 +97,6 @@
                 </Style>
             </StackPanel.Style>
         </StackPanel>
-
-
         <!--Сітка-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition x:Name="SizeChats" Width="{Binding ElementName=StackChats, Path=Width, Mode=OneWay}">
@@ -100,7 +108,5 @@
             </RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
-
     </Grid>
-
 </Window>

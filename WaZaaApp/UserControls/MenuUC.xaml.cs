@@ -41,6 +41,7 @@ namespace WaZaaApp
                 usr = u;
             }
         }
+        //оновлення аватару
         public void RefreshAvatar()
         {
             using (AppContext ctx = new AppContext())
@@ -57,6 +58,7 @@ namespace WaZaaApp
                 }
             }
         }
+        //оновлення імені юзера
         public void RefreshUsername()
         {
             using (AppContext ctx = new AppContext())
@@ -65,6 +67,7 @@ namespace WaZaaApp
                 UsernameTb.Text = u.Login.ToString();
             }
         }
+        //оновлення вікна меню
         public void RefreshMenu(int id)
         {
             using (AppContext ctx = new AppContext())
@@ -113,7 +116,7 @@ namespace WaZaaApp
                                     item.ChatId == item2.ChatId && item.UserId == usr22.Id && item2.UserId == usr11.Id)
                                 {
                                     b = false;
-                                    MessageBox.Show("Такий чат вже є");
+                                    MessageBox.Show("Such a chat already exists");
                                 }
                                 if (b == false)
                                 {
@@ -129,7 +132,7 @@ namespace WaZaaApp
                 }
                 else
                 {
-                    MessageBox.Show("Такого користувача не знайдено");
+                    MessageBox.Show("No such user found");
                 }
                 if (b == true)
                 {
@@ -186,17 +189,17 @@ namespace WaZaaApp
             }
             if (b == true)
             {
-                MessageBox.Show("В логіні є не домустимі символи");
+                MessageBox.Show("There are invalid characters in the login");
                 return false;
             }
             else if (NewUsernameTb.Text.Length > 20)
             {
-                MessageBox.Show("Максимальна кількість символів для логіну 20");
+                MessageBox.Show("The maximum number of characters for login is 20");
                 return false;
             }
             if (string.IsNullOrEmpty(NewUsernameTb.Text))
             {
-                MessageBox.Show("Введіть логін");
+                MessageBox.Show("Enter your username");
                 return false;
             }
             else
@@ -213,7 +216,7 @@ namespace WaZaaApp
                 {
                     if (item.Login == NewUsernameTb.Text)
                     {
-                        MessageBox.Show("Такий нік уже зареєстрований");
+                        MessageBox.Show("Such a nickname is already registered");
                         return false;
                     }
                 }

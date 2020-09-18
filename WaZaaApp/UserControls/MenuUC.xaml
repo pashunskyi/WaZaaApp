@@ -9,21 +9,20 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="500">
     <Grid Background="{x:Null}">
+        <!--аватар юзера-->
         <Ellipse Width="100" Height="100" Grid.ColumnSpan="2">
             <Ellipse.Fill>
                 <ImageBrush x:Name="img" Stretch="Fill"></ImageBrush>
             </Ellipse.Fill>
         </Ellipse>
-       
-
-                
-            
+        <!--кнопка зміни аватару-->
         <Button x:Name="NewIamgeBtm"
                 Width="100" Height="100"
                 Background="{x:Null}"
                 BorderBrush="{x:Null}" 
                 Grid.ColumnSpan="2" Click="NewIamgeBtm_Click"
                  />
+        <!--поле відображення імені-->
         <TextBlock x:Name="UsernameTb"
                    FontSize="30"
                    Grid.ColumnSpan="4"
@@ -32,16 +31,19 @@
                    VerticalAlignment="Center"
                    Margin="0,0,0,50">
         </TextBlock>
+        <!--поле відображення пошти-->
         <TextBlock x:Name="EmailTb"
                    Grid.ColumnSpan="4"
                    Grid.Column="2"
                    Foreground="Gray"
                    Margin="0,50,0,0" >
         </TextBlock>
+        <!--панель настройок-->
         <StackPanel  
             Grid.ColumnSpan="6"
             Grid.Row="1" 
             Grid.RowSpan="15">
+            <!--добавлення контакту-->
             <Expander 
                 Background="{x:Null}"
                 Foreground="#FF20EEDA"
@@ -52,12 +54,14 @@
                     HorizontalAlignment="Left"
                     Orientation="Horizontal"
                     TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
+                    <!--поле для введення нового контакту-->
                     <TextBox x:Name="UsernameNewFrendTb"
                              materialDesign:HintAssist.Hint="Username"
                              Width="350" 
                              Grid.Row="3"
                              Grid.ColumnSpan="5"
                              Grid.Column="1"/>
+                    <!--кнопка для добавлення нового контакту-->
                     <Button x:Name="AddBtm" 
                             Width="50"
                             Content="Add"
@@ -75,6 +79,7 @@
                 </StackPanel>
 
             </Expander>
+            <!--редагування аватару-->
             <Expander 
                 Background="{x:Null}"
                 Foreground="#FF20EEDA"
@@ -85,12 +90,14 @@
                     HorizontalAlignment="Left"
                     Orientation="Horizontal"
                     TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
+                    <!--поле для нового аватару-->
                     <TextBox x:Name="NewUsernameTb"
                              materialDesign:HintAssist.Hint="New username"
                              Width="350" 
                              Grid.Row="3"
                              Grid.ColumnSpan="5"
                              Grid.Column="1"/>
+                    <!--кнопка для зміни аватару-->
                     <Button x:Name="NewUsernameBtm" 
                             Width="50"
                             Content="Ok"
@@ -106,17 +113,9 @@
                             >
                     </Button>
                 </StackPanel>
-
             </Expander>
         </StackPanel>
-
-
-
-
-
-
-
-
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"></ColumnDefinition>
             <ColumnDefinition Width="50"></ColumnDefinition>

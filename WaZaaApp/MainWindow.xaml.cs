@@ -28,8 +28,6 @@ namespace WaZaaApp
             OpenRegisterWindow();
             Thread myThread = new Thread(DynamicUpdateChats);
             myThread.Start();
-            
-
         }
         //динамічне оновлення чатів
         void DynamicUpdateChats()
@@ -70,6 +68,7 @@ namespace WaZaaApp
             }
             OpenUserWindow();
         }
+        //показ діалогу
         public void ShowUserDialog(User contact)
         {
             NameOfCurrentChat.Text = contact.Login;
